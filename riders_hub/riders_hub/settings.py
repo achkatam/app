@@ -38,6 +38,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    "rest_framework",
+    "rest_framework.authtoken",
+    "drf_spectacular",
+    "drf_spectacular_sidecar",
+
     "riders_hub.accounts.apps.AccountsConfig"
 ]
 
@@ -74,7 +79,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "riders_hub.wsgi.application"
 
+REST_FRAMEWORK = {
+    # YOUR SETTINGS
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
 
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Riders App API',
+    'DESCRIPTION': 'Best app',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    'SWAGGER_UI_DIST': 'SIDECAR',  # shorthand to use the sidecar instead
+    'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
+    'REDOC_DIST': 'SIDECAR',
+    # OTHER SETTINGS
+}
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
